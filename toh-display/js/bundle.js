@@ -194,16 +194,12 @@ class View {
   }
 
   makeMove(from, to, fromRow, toRow, width) {
-    console.log(from);
-    console.log(fromRow);
     let $fromDisk = $(`.disc${width}`);
-    let $toSquare = $(`.${toRow}-${to}`);
-    console.log(toRow);
-    console.log(`.${toRow}-${to}`);
-    console.log($toSquare);
-    $fromDisk.css("background-color", "pink");
-    $toSquare.css("background-color", "pink");
-
+    let $toSquare = $(`.${2 - toRow}-${to}`);
+    $toSquare.append($fromDisk);
+    if (this.game.isWon()) {
+      setTimeout(() => alert("Congrats, you won!"), 5);
+    }
   }
 
   setupTowers() {
